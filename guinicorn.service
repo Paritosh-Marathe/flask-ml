@@ -1,0 +1,9 @@
+[Unit]
+Description=Gunicorn Service
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/my-flask-app
+ExecStart=/home/ubuntu/base/bin/gunicorn — workers 3 — error-logfile /home/ubuntu/gunicorn_logs/error_log — bind unix:my_flask_app.sock -m 007 app:app

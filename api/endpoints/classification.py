@@ -14,7 +14,7 @@ classification_api = Blueprint('classification_api', __name__)
 model.load_weights(_model)
 #model=pickle.load(open(_model,'rb+'))
 
-@classification_api.route('/classification')
+@classification_api.route('/classification',methods=['POST','GET'])
 def classification():
     sample=json.loads(request.data)['data']
     img=resize(io.imread(sample,as_gray=True),(28,28))
